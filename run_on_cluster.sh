@@ -1,9 +1,6 @@
 #!/bin/bash
 #
-# CREATED USING THE BIOHPC PORTAL on Wed Jul 28 2021 19:13:06 GMT-0500 (Central Daylight Time)
-#
-# This file is batch script used to run commands on the BioHPC cluster.
-# The script is submitted to the cluster using the SLURM `sbatch` command.
+
 # Lines starting with # are comments, and will not be run.
 # Lines starting with #SBATCH specify options for the scheduler.
 # Lines that do not start with # or #SBATCH are commands that will run.
@@ -31,17 +28,17 @@
 
 # Send an email when the job status changes, to the specfied address.
 #SBATCH --mail-type ALL
-#SBATCH --mail-user stephan.daetwyler@utsouthwestern.edu
+#SBATCH --mail-user [your email address]
 
 #load Singularity
 module load singularity/3.5.3
 
 # COMMAND GROUP 1 - go to the folder where the container is saved
-cd /archive/bioinformatics/Danuser_lab/Fiolka/LabMembers/Stephan/container_example
+cd [your folder with the container]
 
 #define here parameters for your tool 
-imag_directory="/archive/bioinformatics/Danuser_lab/Fiolka/LabMembers/Stephan/container_example/data3"
-imag_savesegmented="/archive/bioinformatics/Danuser_lab/Fiolka/LabMembers/Stephan/container_example/save_segmentation3"
+imag_directory="[file path to images]"
+imag_savesegmented="[file path to save segmentations]"
 mode="nuclei"
 flow_threshold=0
 cellprob_threshold=-1
