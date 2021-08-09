@@ -39,6 +39,7 @@ module load singularity/3.5.3
 # COMMAND GROUP 1 - go to the folder where the container is saved
 cd /archive/bioinformatics/Danuser_lab/Fiolka/LabMembers/Stephan/container_example
 
+#define here parameters for your tool 
 imag_directory="/archive/bioinformatics/Danuser_lab/Fiolka/LabMembers/Stephan/container_example/data3"
 imag_savesegmented="/archive/bioinformatics/Danuser_lab/Fiolka/LabMembers/Stephan/container_example/save_segmentation3"
 mode="nuclei"
