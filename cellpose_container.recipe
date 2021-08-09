@@ -1,0 +1,47 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%labels
+        AUTHOR: Shilpita Mitra-Behura, Reto Fiolka, Stephan Daetwyler
+
+%files
+        /home/vagrant/python_main.py /mnt
+
+%post
+        #Downloads the latest package lists.
+        apt-get update -y
+
+        #Install python and other tools.
+        #Non-interactive is used to ensure prompts are not needed.
+        DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        python3 git wget \
+        python3-dev \
+        python3-tk \
+        python3-pip \
+        python3-pyqt5 \
+        python3-setuptools \
+
+        #Update pip
+        python3 -m pip install --upgrade pip
+
+        #Install python libraries needed for Cellpose to run
+        python3 -m pip install wheel
+        python3 -m pip install --no-cache-dir torch>=1.8.1
+        python3 -m pip install opencv-python-headless
+        python3 -m pip install google-cloud-storage
+        python3 -m pip install cellpose --upgrade
+
+%runscript
+        exec /usr/bin/python3 /mnt/python_main.py "$@"
+
+%help
+        This is a Singularity container to segment images using Cellpose.
+        To run this container, use, for example, 'singularity run cellpose_container.sif --filedir /folder/where/files/to/segment/are --savedir /folder/where/segmented/files/should/be/saved --pretrained_model cyto --chan 2 --chan2 1 --save_tif'  
+
+	The user must put the folder where the files to be segmented are after the flag “--filedir.”  
+	The directory where the user wants to save their files is optional, with the tag “--savedir.” If this tag is not provided, the files will save to the directory denoted in "--filedir".
+	The flag “--pretrained_model” is required and must have either the input “cyto” or “nuclei.”  
+	The flags “--chan” and “--chan2” are optional and allude to the channels of the image that will be segmented. 
+	The flag “--diameter” is optional and can be added for the user to specify the diameter of the nuclei in image.  
+	The flags “--flow_threshold”, “--cellprob_threshold” are further optional flags to specify cellpose parameters.
+	The flags “--save_png” and “--save_tif” are used to denote what filetype the segmented files are saved as. The default is to save as a Tiff.
