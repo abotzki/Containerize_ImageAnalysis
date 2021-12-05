@@ -7,3 +7,5 @@ The following files are contained:
 4. The cellpose_container.recipe file: This file contains the instructions for building the Singularity Container
 5. The run_on_cluster.sh file: This file is the SLURM file to start a job on the Cluster with your container.
 6. The Data Folder: This folder contains images to test your container segementation on.
+
+A documentation of the provided files and their usage is found here: https://www.frontiersin.org/articles/10.3389/fbinf.2021.757291/full
