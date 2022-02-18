@@ -41,18 +41,3 @@ From: ubuntu:20.04
 	The flags “--flow_threshold”, “--cellprob_threshold” are further optional flags to specify cellpose parameters.
 	The flags “--save_png” and “--save_tif” are used to denote what filetype the segmented files are saved as. The default is to save as a Tiff.
 
-    © 2022 GitHub, Inc.
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-
